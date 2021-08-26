@@ -1,0 +1,18 @@
+package com.muramsyah.hima.voti.core.domain.usecase
+
+import com.muramsyah.hima.voti.core.data.Resource
+import com.muramsyah.hima.voti.core.domain.model.CalonKahim
+import com.muramsyah.hima.voti.core.domain.model.Mahasiswa
+import io.reactivex.Flowable
+
+interface VotiUseCase {
+    fun signInAccount(email: String, password: String): Flowable<Resource<Mahasiswa>>
+
+    fun registerNewAccount(data: Mahasiswa, password: String): Flowable<Resource<String>>
+
+    fun voteTheCandidate(data: Mahasiswa, dataCandidate: CalonKahim, date: String): Flowable<Resource<String>>
+
+    fun getCandidates(): Flowable<Resource<List<CalonKahim>>>
+
+    fun getMahasiswa(): Flowable<Resource<Mahasiswa>>
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1E88E5</color>
+    <color name="secondary">#1E88E5</color>
+    <color name="gray">#DDDD</color>
+    <color name="bottomsheet">#ffffff</color>
+    <color name="colorOnPrimary">#ffffff</color>
+    <color name="colorTextTitle">#353535</color>
+</resources>
