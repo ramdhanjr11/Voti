@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.muramsyah.hima.voti.R
@@ -86,11 +87,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        setProgressBar(true)
         viewModel.getCandidates().observe(this, { resources ->
             when (resources) {
                 is Resource.Loading -> {
-                    Log.d("isLoading", "true")
                     setProgressBar(true)
                 }
                 is Resource.Success -> {
@@ -109,8 +108,6 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getMahasiswa().observe(this, { resource ->
             if (resource != null && resource is Resource.Success) {
                 binding.tvNama.text = resource.data!!.nama
-            } else {
-                Toast.makeText(this, resources.getString(R.string.title_something_wrong), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -134,7 +131,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 // 4
                 override fun onSequenceFinish() {
-                    Toast.makeText(this@HomeActivity, "Ayo mulai vote!", Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, "Ayo mulai vote!", Snackbar.LENGTH_LONG).show()
                 }
                 // 5
                 override fun onSequenceCanceled(lastTarget: TapTarget) {

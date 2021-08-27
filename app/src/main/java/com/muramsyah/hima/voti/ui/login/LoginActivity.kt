@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val email = binding.edtEmail.text.toString().trim()
                 val password = binding.edtPassword.text.toString().trim()
 
-                binding.progressBar.visibility = View.VISIBLE
                 viewModel.signInAccount(email, password).observe(this, { resource ->
                     when (resource) {
                         is Resource.Loading -> {

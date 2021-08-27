@@ -146,7 +146,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                         binding.edtEmail.text.toString().trim()
                     )
 
-                    binding.progressBar.visibility = View.VISIBLE
                     viewModel.registerNewAccount(mahasiswa, binding.edtPassword.text.toString().trim())
                         .observe(this, { resource ->
                             when (resource) {

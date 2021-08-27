@@ -19,8 +19,8 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
     override fun signInAccount(email: String, password: String): Flowable<Resource<Mahasiswa>> {
         val result = PublishSubject.create<Resource<Mahasiswa>>()
 
-        result.onNext(Resource.Loading(null))
         val signIn = firebaseDataSource.signInAccount(email, password)
+            .doOnSubscribe { result.onNext(Resource.Loading(null)) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -43,9 +43,8 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
     override fun registerNewAccount(data: Mahasiswa, password: String): Flowable<Resource<String>> {
         val result = PublishSubject.create<Resource<String>>()
 
-        result.onNext(Resource.Loading(null))
-        result.onNext(Resource.Loading("Loading"))
         val registerAccount = firebaseDataSource.registerNewAccount(data, password)
+            .doOnSubscribe { result.onNext(Resource.Loading(null)) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -72,8 +71,8 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
     ): Flowable<Resource<String>> {
         val result = PublishSubject.create<Resource<String>>()
 
-        result.onNext(Resource.Loading(null))
         val voteCandidate = firebaseDataSource.voteCandidate(data, dataCandidate, date)
+            .doOnSubscribe { result.onNext(Resource.Loading(null)) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -96,8 +95,8 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
     override fun getCandidates(): Flowable<Resource<List<CalonKahim>>> {
         val result = PublishSubject.create<Resource<List<CalonKahim>>>()
 
-        result.onNext(Resource.Loading())
         val candidates = firebaseDataSource.getCandidates()
+            .doOnSubscribe { result.onNext(Resource.Loading(null)) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -113,7 +112,6 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
                     }
                 }
             }
-        result.onNext(Resource.Loading())
         compositeDisposable.add(candidates)
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
@@ -121,8 +119,8 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
     override fun getMahasiswa(): Flowable<Resource<Mahasiswa>> {
         val result = PublishSubject.create<Resource<Mahasiswa>>()
 
-        result.onNext(Resource.Loading(null))
         val mahasiswa = firebaseDataSource.getMahasiswa()
+            .doOnSubscribe { result.onNext(Resource.Loading(null)) }
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -136,9 +134,9 @@ class VotiRepository(private val firebaseDataSource: FirebaseDataSource) : IVoti
                     is FirebaseResponse.Error -> {
                         result.onNext(Resource.Error(response.message))
                     }
+                    else -> result.onNext(Resource.Loading(null))
                 }
             }
-//        result.onNext(Resource.Loading(null))
         compositeDisposable.add(mahasiswa)
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
