@@ -3,8 +3,6 @@ package com.muramsyah.hima.voti.ui.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,17 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.muramsyah.hima.voti.R
 import com.muramsyah.hima.voti.core.data.Resource
-import com.muramsyah.hima.voti.core.domain.model.Mahasiswa
 import com.muramsyah.hima.voti.core.sf.AppSharedPreference
 import com.muramsyah.hima.voti.core.ui.HomeAdapter
 import com.muramsyah.hima.voti.databinding.ActivityHomeBinding
-import com.muramsyah.hima.voti.databinding.ItemCalonKahimBinding
-import com.muramsyah.hima.voti.ui.detail.DetailCalonFragment
-import com.muramsyah.hima.voti.ui.detail.DetailStatisticFragment
+import com.muramsyah.hima.voti.ui.detail.calon.DetailCalonFragment
+import com.muramsyah.hima.voti.ui.detail.statistic.DetailStatisticFragment
 import com.muramsyah.hima.voti.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -170,5 +164,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         homeActivityBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initViewModel()
     }
 }

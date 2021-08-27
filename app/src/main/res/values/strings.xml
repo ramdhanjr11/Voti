@@ -27,6 +27,7 @@
     <string name="title_alert_nama">Nama tidak valid!</string>
     <string name="title_alert_angkatan">Isi angkatan terlebih dahulu!!</string>
     <string name="title_alert_confirm_password">Password tidak sesuai!</string>
+    <string name="title_alert_already_vote">Anda hanya bisa melakukan 1x voting!</string>
 
 <!--  TapTarget  -->
     <string name="title_taptarget_logout">Logout</string>

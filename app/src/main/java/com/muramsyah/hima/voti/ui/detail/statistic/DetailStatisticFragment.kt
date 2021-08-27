@@ -1,4 +1,4 @@
-package com.muramsyah.hima.voti.ui.detail
+package com.muramsyah.hima.voti.ui.detail.statistic
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.muramsyah.hima.voti.core.domain.model.CalonKahim
 import com.muramsyah.hima.voti.databinding.ItemBotomsheetStatisticBinding
+import com.muramsyah.hima.voti.ui.detail.calon.DetailCalonViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 

@@ -1,4 +1,4 @@
-package com.muramsyah.hima.voti.ui.detail
+package com.muramsyah.hima.voti.ui.detail.calon
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -54,8 +54,19 @@ class DetailCalonFragment : BottomSheetDialogFragment() {
                         is Resource.Success -> {
                             val sf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
                             val dateVoteNow = sf.format(Date())
-                            viewModel.voteCandidate(resource.data!!, calonKahim!!, dateVoteNow.toString())
-                            Toast.makeText(requireContext(), "Kamu telah memilih ${calonKahim.nama}!", Toast.LENGTH_SHORT).show()
+                            viewModel.voteCandidate(resource.data!!, calonKahim!!, dateVoteNow.toString()).observe(this, { candidate ->
+                                when (candidate) {
+                                    is Resource.Loading -> { binding.progressBar.visibility = View.VISIBLE }
+                                    is Resource.Success -> {
+                                        binding.progressBar.visibility = View.GONE
+                                        Toast.makeText(requireContext(), "Sukses memilih ${resource.data.nama}", Toast.LENGTH_LONG).show()
+                                    }
+                                    is Resource.Error -> {
+                                        binding.progressBar.visibility = View.GONE
+                                        Toast.makeText(requireContext(), resources.getString(R.string.title_alert_already_vote), Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                            })
                         }
                         is Resource.Error -> {
                             Toast.makeText(requireContext(), resources.getString(R.string.title_something_wrong), Toast.LENGTH_SHORT).show()
