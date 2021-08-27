@@ -119,23 +119,29 @@ class HomeActivity : AppCompatActivity() {
         TapTargetSequence(this)
             // 2
             .targets(
-                TapTarget.forView(binding.imgBtnLogout, "Logout", "keluar dari akun anda").cancelable(false).
-                transparentTarget(true).targetRadius(40),
-                TapTarget.forView(binding.cvStatistic, "Statistik Calon Ketua","Klik disini untuk melihat statistik calon ketua himpunan").cancelable(false).
-                transparentTarget(true).targetRadius(70),
-                TapTarget.forView(binding.rvCalonKahim, "Calon ketua himpunan", "Klik disini untuk memilih calon ketua himpunan").cancelable(false).
-                transparentTarget(true).targetRadius(150))
+                TapTarget.forView(binding.imgBtnLogout, resources.getString(R.string.title_taptarget_logout), resources.getString(R.string.description_taptarget_logout))
+                    .cancelable(false)
+                    .transparentTarget(true)
+                    .targetRadius(40),
+
+                TapTarget.forView(binding.cvStatistic, resources.getString(R.string.title_taptarget_statistic),resources.getString(R.string.description_taptarget_statistic))
+                    .cancelable(false)
+                    .transparentTarget(true)
+                    .targetRadius(70),
+
+                TapTarget.forView(binding.rvCalonKahim, resources.getString(R.string.title_taptarget_calonkahim), resources.getString(R.string.description_taptarget_calonkahim))
+                    .cancelable(false)
+                    .transparentTarget(true)
+                    .targetRadius(150))
             // 3
             .listener(object : TapTargetSequence.Listener {
-                override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
-                }
+                override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {}
                 // 4
                 override fun onSequenceFinish() {
-                    Snackbar.make(binding.root, "Ayo mulai vote!", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, resources.getString(R.string.title_let_vote), Snackbar.LENGTH_LONG).show()
                 }
                 // 5
-                override fun onSequenceCanceled(lastTarget: TapTarget) {
-                }
+                override fun onSequenceCanceled(lastTarget: TapTarget) {}
             })
             // 6
             .start()

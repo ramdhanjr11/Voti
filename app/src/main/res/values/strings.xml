@@ -27,4 +27,15 @@
     <string name="title_alert_nama">Nama tidak valid!</string>
     <string name="title_alert_angkatan">Isi angkatan terlebih dahulu!!</string>
     <string name="title_alert_confirm_password">Password tidak sesuai!</string>
+
+<!--  TapTarget  -->
+    <string name="title_taptarget_logout">Logout</string>
+    <string name="title_taptarget_statistic">Statistik Calon Ketua Himpunan</string>
+    <string name="title_taptarget_calonkahim">Calon Ketua Himpunan</string>
+
+    <string name="description_taptarget_logout">Klik disini untuk keluar dari akun anda</string>
+    <string name="description_taptarget_statistic">Klik disini untuk melihat statistik calon ketua himpunan</string>
+    <string name="description_taptarget_calonkahim">Klik disini untuk memilih calon ketua himpunan</string>
+
+    <string name="title_let_vote">Ayo mulai voting pilihanmu!</string>
 </resources>
