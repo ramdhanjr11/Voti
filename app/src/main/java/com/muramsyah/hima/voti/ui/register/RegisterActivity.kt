@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 name.length < 3 || name.length > 25
             }
         name.subscribe {
-            showAlert(3, it)
+            showAlert(2, it)
         }
 
         val email = RxTextView.textChanges(binding.edtEmail)
@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches()
             }
         email.subscribe {
-            showAlert(4, it)
+            showAlert(5, it)
         }
 
         val password = RxTextView.textChanges(binding.edtPassword)
@@ -75,7 +75,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 password.length < 7
             }
         password.subscribe {
-            showAlert(5, it)
+            showAlert(6, it)
         }
 
         val coPassword = Observable.merge(
@@ -93,7 +93,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 }
         )
         coPassword.subscribe {
-            showAlert(6, it)
+            showAlert(7, it)
         }
 
         val invalidFieldsStream = Observable.combineLatest(
@@ -113,16 +113,21 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         val dummyForce = arrayOf("2018", "2019", "2020", "2021")
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dummyForce)
         binding.edtForce.setAdapter(adapter)
+
+        val dummySemester = arrayOf(1, 3, 5)
+        val adapterSmt = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dummySemester)
+        binding.edtSemester.setAdapter(adapterSmt)
     }
 
     private fun showAlert(code: Int, isShowAlert: Boolean) {
         when (code) {
             1 -> binding.tilNim.error           = if(isShowAlert) resources.getString(R.string.title_alert_nim) else null
-            2 -> binding.tilForce.error         = if(isShowAlert) resources.getString(R.string.title_alert_angkatan) else null
-            3 -> binding.tilName.error          = if(isShowAlert) resources.getString(R.string.title_alert_nama) else null
-            4 -> binding.tilEmail.error         = if(isShowAlert) resources.getString(R.string.title_alert_email) else null
-            5 -> binding.tilPassword.error      = if(isShowAlert) resources.getString(R.string.title_alert_password) else null
-            6 -> binding.tilCoPassword.error    = if(isShowAlert) resources.getString(R.string.title_alert_confirm_password) else null
+            2 -> binding.tilName.error          = if(isShowAlert) resources.getString(R.string.title_alert_nama) else null
+            3 -> binding.tilForce.error         = if(isShowAlert) resources.getString(R.string.title_alert_angkatan) else null
+            4 -> binding.tilSemester.error      = if(isShowAlert) resources.getString(R.string.title_alert_semester) else null
+            5 -> binding.tilEmail.error         = if(isShowAlert) resources.getString(R.string.title_alert_email) else null
+            6 -> binding.tilPassword.error      = if(isShowAlert) resources.getString(R.string.title_alert_password) else null
+            7 -> binding.tilCoPassword.error    = if(isShowAlert) resources.getString(R.string.title_alert_confirm_password) else null
         }
     }
 
@@ -136,13 +141,15 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_register -> {
 
                 if (TextUtils.isEmpty(binding.edtForce.text)) {
-                    binding.tilForce.error = resources.getString(R.string.title_alert_angkatan)
+                    showAlert(3, true)
+                } else if (TextUtils.isEmpty(binding.edtSemester.text)) {
+                    showAlert(4, true)
                 } else {
                     val mahasiswa = Mahasiswa(
                         binding.edtNim.text.toString().trim(),
                         binding.edtName.text.toString().trim(),
                         binding.edtForce.text.toString().trim().toInt(),
-                        5,
+                        binding.edtSemester.text.toString().toInt(),
                         binding.edtEmail.text.toString().trim()
                     )
 
@@ -167,6 +174,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.tv_login -> {
+                viewModel.logoutUser()
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

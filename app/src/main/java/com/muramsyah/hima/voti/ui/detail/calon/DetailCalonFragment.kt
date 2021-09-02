@@ -59,7 +59,7 @@ class DetailCalonFragment : BottomSheetDialogFragment() {
                                     is Resource.Loading -> { binding.progressBar.visibility = View.VISIBLE }
                                     is Resource.Success -> {
                                         binding.progressBar.visibility = View.GONE
-                                        Toast.makeText(requireContext(), "Sukses memilih ${resource.data.nama}", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(requireContext(), "Sukses memilih ${calonKahim.nama}", Toast.LENGTH_LONG).show()
                                     }
                                     is Resource.Error -> {
                                         binding.progressBar.visibility = View.GONE

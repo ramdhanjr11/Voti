@@ -13,6 +13,7 @@
     <string name="title_nim">Nim</string>
     <string name="title_name">Nama</string>
     <string name="title_force">Angkatan</string>
+    <string name="title_semester">Semester</string>
     <string name="title_confirm_password">Confirm Password</string>
     <string name="title_already_have_an_account">Sudah memiliki akun?</string>
     <string name="title_welcome_home"><b>Hai</b>, Selamat datang</string>
@@ -25,9 +26,10 @@
     <string name="title_alert_password">Password kurang dari 7 karakter!</string>
     <string name="title_alert_nim">Nim tidak valid!</string>
     <string name="title_alert_nama">Nama tidak valid!</string>
-    <string name="title_alert_angkatan">Isi angkatan terlebih dahulu!!</string>
+    <string name="title_alert_angkatan">Isi angkatan terlebih dahulu!</string>
     <string name="title_alert_confirm_password">Password tidak sesuai!</string>
     <string name="title_alert_already_vote">Anda hanya bisa melakukan 1x voting!</string>
+    <string name="title_alert_semester">Isi email terlebih dahulu!</string>
 
     <!--  TapTarget  -->
     <string name="title_taptarget_logout">Logout</string>
