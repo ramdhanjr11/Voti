@@ -18,8 +18,8 @@ import com.muramsyah.hima.voti.core.sf.AppSharedPreference
 import com.muramsyah.hima.voti.core.ui.HomeAdapter
 import com.muramsyah.hima.voti.databinding.ActivityHomeBinding
 import com.muramsyah.hima.voti.ui.detail.calon.DetailCalonFragment
-import com.muramsyah.hima.voti.ui.detail.statistic.DetailStatisticFragment
 import com.muramsyah.hima.voti.ui.login.LoginActivity
+import com.muramsyah.hima.voti.ui.settings.SettingsActivity
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -176,7 +176,11 @@ class HomeActivity : AppCompatActivity() {
                 finish()
             }
 
-            R.id.action_tentang -> { Snackbar.make(binding.root, "Coming Soon Feature", Snackbar.LENGTH_SHORT).show() }
+            R.id.action_tentang -> {
+//                Snackbar.make(binding.root, "Coming Soon Feature", Snackbar.LENGTH_SHORT).show()
+                val intent = Intent(this@HomeActivity, SettingsActivity::class.java)
+                startActivity(intent)
+            }
 
         }
         return super.onOptionsItemSelected(item)

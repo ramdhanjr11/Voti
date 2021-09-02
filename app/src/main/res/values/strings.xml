@@ -29,7 +29,7 @@
     <string name="title_alert_confirm_password">Password tidak sesuai!</string>
     <string name="title_alert_already_vote">Anda hanya bisa melakukan 1x voting!</string>
 
-<!--  TapTarget  -->
+    <!--  TapTarget  -->
     <string name="title_taptarget_logout">Logout</string>
     <string name="title_taptarget_statistic">Statistik Calon Ketua Himpunan</string>
     <string name="title_taptarget_calonkahim">Calon Ketua Himpunan</string>
@@ -39,4 +39,12 @@
     <string name="description_taptarget_calonkahim">Klik disini untuk memilih calon ketua himpunan</string>
 
     <string name="title_let_vote">Ayo mulai voting pilihanmu!</string>
+
+    <!--  About  -->
+    <string name="title_hmif_description">HMIF UMMI adalah organisasi yang berkedudukan dibawah Program Studi Teknik Informatika Fakultas Sains dan Teknologi Universitas Muhammadiyah Sukabumi</string>
+    <string name="title_hmif_visi">Mewujudkan Himpunan Mahasiswa Teknik Informatika yang propesional dalam keilmuan serta menjungjung solidaritas dengan didasari nilai-nilai keislaman.</string>
+    <string name="title_hmif_misi_1">Meningkatkan ketaqwaan terhadap Tuhan yang maha Esa</string>
+    <string name="title_hmif_misi_2">Meningkatkan skill ke-informatikaan bagi mahasiswa Teknik Informatika.</string>
+    <string name="title_hmif_misi_3">Menciptakan keharmonisan seluruh elemen jurusan Teknik Informatika.</string>
+    <string name="title_hmif_misi_4">Menumbuhkan rasa tanggung jawab serta cinta terhadap Himpunan.</string>
 </resources>
