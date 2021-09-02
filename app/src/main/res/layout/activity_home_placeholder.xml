@@ -12,113 +12,62 @@
     app:layout_constraintTop_toTopOf="parent"
     app:shimmer_auto_start="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary"
-    tools:context=".ui.home.HomeActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="235dp"
-        android:layout_height="154dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="-6dp"
-        android:background="#DDDD"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorOnPrimary"
-        android:text="@string/lorem_ipsum_dummy_title"
-        android:textColor="@color/colorOnPrimary"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ellipsize="end"
-        android:background="@color/colorOnPrimary"
-        android:maxLength="25"
-        android:textColor="@color/colorOnPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:text="@string/lorem_ipsum_dummy_title" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="197dp" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/ic_bg_bottom_sheets"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
+        tools:context=".ui.home.HomeActivity">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            app:elevation="0dp"
+            android:background="@android:color/transparent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="?attr/actionBarSize">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_statistic"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:layout_scrollFlags="enterAlways"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:cardCornerRadius="20dp">
+                android:layout_height="match_parent" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="#DDDD">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginBottom="0dp"
-                        android:gravity="center_vertical"
-                        android:background="@color/colorOnPrimary"
-                        tools:text="Lihat Statistik terkini"
-                        android:textColor="@color/colorOnPrimary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/progress_bar2"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shimmer_auto_start="true">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/title_welcome_home"
+                    android:textColor="#dddd"
+                    android:background="#dddd"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:ellipsize="end"
+                    android:maxLength="30"
+                    android:textColor="#dddd"
+                    android:background="#dddd"
+                    android:text="@string/lorem_ipsum_dummy_title"
+                    android:textSize="18sp"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_statistic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -127,33 +76,31 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="#DDDDDD">
+                        android:background="#dddd">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="0dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="60dp"
                             android:layout_marginBottom="0dp"
                             android:gravity="center_vertical"
-                            android:background="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffff"
+                            android:background="#ffff"
+                            android:text="Lihat Statistik terkini" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-            </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="8dp"
-                android:background="#DDDD"
-                android:textColor="#DDDD"
-                android:text="@string/lorem_ipsum_dummy_title" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:textColor="#dddd"
+                    android:background="#dddd"
+                    android:text="@string/title_choose_candidate" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -166,9 +113,8 @@
 
                     <include layout="@layout/item_calon_placeholder" />
                 </LinearLayout>
+            </LinearLayout>
 
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

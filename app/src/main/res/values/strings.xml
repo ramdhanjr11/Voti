@@ -15,7 +15,7 @@
     <string name="title_force">Angkatan</string>
     <string name="title_confirm_password">Confirm Password</string>
     <string name="title_already_have_an_account">Sudah memiliki akun?</string>
-    <string name="title_welcome_home">Halo, Selamat datang</string>
+    <string name="title_welcome_home"><b>Hai</b>, Selamat datang</string>
     <string name="title_show_current_statistic">Lihat Statistik terkini</string>
     <string name="title_choose_candidate">Pilih calon Ketua Himpunan</string>
     <string name="title_logout">Keluar</string>

@@ -3,6 +3,8 @@ package com.muramsyah.hima.voti.ui.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -42,19 +44,14 @@ class HomeActivity : AppCompatActivity() {
         homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = ""
+
         adapter = HomeAdapter()
         binding.rvCalonKahim.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvCalonKahim.setHasFixedSize(true)
 
         initViewModel()
-
-        binding.imgBtnLogout.setOnClickListener {
-            viewModel.logoutUser()
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
 
         adapter.onClick = { data ->
             val detailCalonFragment = DetailCalonFragment()
@@ -65,7 +62,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.cvStatistic.setOnClickListener {
-            DetailStatisticFragment().show(supportFragmentManager, DetailStatisticFragment.TAG)
+//            DetailStatisticFragment().show(supportFragmentManager, DetailStatisticFragment.TAG)
+            Snackbar.make(binding.root, "Coming Soon Feature", Snackbar.LENGTH_SHORT).show()
         }
 
         binding.refreshContent.setOnRefreshListener {
@@ -113,10 +111,10 @@ class HomeActivity : AppCompatActivity() {
         TapTargetSequence(this)
             // 2
             .targets(
-                TapTarget.forView(binding.imgBtnLogout, resources.getString(R.string.title_taptarget_logout), resources.getString(R.string.description_taptarget_logout))
-                    .cancelable(false)
-                    .transparentTarget(true)
-                    .targetRadius(40),
+//                TapTarget.forView(binding.imgBtnLogout, resources.getString(R.string.title_taptarget_logout), resources.getString(R.string.description_taptarget_logout))
+//                    .cancelable(false)
+//                    .transparentTarget(true)
+//                    .targetRadius(40),
 
                 TapTarget.forView(binding.cvStatistic, resources.getString(R.string.title_taptarget_statistic),resources.getString(R.string.description_taptarget_statistic))
                     .cancelable(false)
@@ -144,21 +142,44 @@ class HomeActivity : AppCompatActivity() {
     private fun setProgressBar(isProgress: Boolean) {
         if (isProgress) {
             binding.progressBar.root.visibility = View.VISIBLE
-            binding.imageView.visibility = View.GONE
-            binding.textView.visibility = View.GONE
             binding.tvNama.visibility = View.GONE
             binding.cvStatistic.visibility = View.GONE
-            binding.textView2.visibility = View.GONE
             binding.rvCalonKahim.visibility = View.GONE
+//            binding.toolbarCustom.visibility = View.GONE
+            binding.tvWelcome.visibility = View.GONE
+            binding.tvTitleCalonKahim.visibility = View.GONE
         } else {
             binding.progressBar.root.visibility = View.GONE
-            binding.imageView.visibility = View.VISIBLE
-            binding.textView.visibility = View.VISIBLE
             binding.tvNama.visibility = View.VISIBLE
             binding.cvStatistic.visibility = View.VISIBLE
-            binding.textView2.visibility = View.VISIBLE
             binding.rvCalonKahim.visibility = View.VISIBLE
+//            binding.toolbarCustom.visibility = View.VISIBLE
+            binding.tvWelcome.visibility = View.VISIBLE
+            binding.tvTitleCalonKahim.visibility = View.VISIBLE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.action_logout -> {
+                viewModel.logoutUser()
+
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.action_tentang -> { Snackbar.make(binding.root, "Coming Soon Feature", Snackbar.LENGTH_SHORT).show() }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {
