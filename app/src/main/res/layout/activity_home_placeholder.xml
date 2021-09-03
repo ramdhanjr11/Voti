@@ -50,7 +50,7 @@
                     android:text="@string/title_welcome_home"
                     android:textColor="#dddd"
                     android:background="#dddd"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tv_nama"
@@ -64,7 +64,7 @@
                     android:textColor="#dddd"
                     android:background="#dddd"
                     android:text="@string/lorem_ipsum_dummy_title"
-                    android:textSize="18sp"/>
+                    android:textSize="14sp"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_statistic"
