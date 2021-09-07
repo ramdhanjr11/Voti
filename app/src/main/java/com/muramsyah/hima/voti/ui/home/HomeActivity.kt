@@ -111,11 +111,6 @@ class HomeActivity : AppCompatActivity() {
         TapTargetSequence(this)
             // 2
             .targets(
-//                TapTarget.forView(binding.imgBtnLogout, resources.getString(R.string.title_taptarget_logout), resources.getString(R.string.description_taptarget_logout))
-//                    .cancelable(false)
-//                    .transparentTarget(true)
-//                    .targetRadius(40),
-
                 TapTarget.forView(binding.cvStatistic, resources.getString(R.string.title_taptarget_statistic),resources.getString(R.string.description_taptarget_statistic))
                     .cancelable(false)
                     .transparentTarget(true)
@@ -145,7 +140,6 @@ class HomeActivity : AppCompatActivity() {
             binding.tvNama.visibility = View.GONE
             binding.cvStatistic.visibility = View.GONE
             binding.rvCalonKahim.visibility = View.GONE
-//            binding.toolbarCustom.visibility = View.GONE
             binding.tvWelcome.visibility = View.GONE
             binding.tvTitleCalonKahim.visibility = View.GONE
         } else {
@@ -153,7 +147,6 @@ class HomeActivity : AppCompatActivity() {
             binding.tvNama.visibility = View.VISIBLE
             binding.cvStatistic.visibility = View.VISIBLE
             binding.rvCalonKahim.visibility = View.VISIBLE
-//            binding.toolbarCustom.visibility = View.VISIBLE
             binding.tvWelcome.visibility = View.VISIBLE
             binding.tvTitleCalonKahim.visibility = View.VISIBLE
         }

@@ -2,16 +2,14 @@ package com.muramsyah.hima.voti.ui.login
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.nfc.NfcAdapter.EXTRA_DATA
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.muramsyah.hima.voti.R
 import com.muramsyah.hima.voti.core.data.Resource
@@ -79,6 +77,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val email = binding.edtEmail.text.toString().trim()
                 val password = binding.edtPassword.text.toString().trim()
 
+                FirebaseMessaging.getInstance().subscribeToTopic("vote")
                 viewModel.signInAccount(email, password).observe(this, { resource ->
                     when (resource) {
                         is Resource.Loading -> {
